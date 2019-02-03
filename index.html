@@ -1,0 +1,505 @@
+<head>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div>
+        <form class="charcreate" id="playercontrol">
+            <fieldset>
+                <label class="charcreate" for="playername">Player Name</label>
+                <input class="charcreate" type="text" name="playername" value="Skef Lars">
+                <label class="charcreate" for="campaignname">Campaign Name: </label>
+                <input class="charcreate" type="text" name="campaignname" value="Duggenmoor">
+            <div>   
+                <label for="characterfirstname">Character's First Name: </label>
+                <input type="text" name="characterfirstname">
+                <label for="characterlastname">Character's Last Name: </label>
+                <input type="text" name="characterlastname">
+                <label for="characterepithet">Character's Epithet: </label>
+                <input type="text" name="characterepithet">
+            </div>
+            </fieldset>
+    </div>  
+
+    <!-- Class ID's = 1st letter and last letter/ -->
+    <!-- Subclas ID's = Class ID and first 4 letters of subclass, not counting flavor titles -->
+    <div>
+        <fieldset class="charcreate" id="charclass">
+        <div>
+            <label for="classname">Class Name: </label>
+            <select name="classname">
+                <option value="" selected disabled hidden>Choose here</option>
+                <optgroup id="bn" label="Barbarian">
+                    <option> Path of the Ancestral Guardian</option>
+                    <option>Path of the Battlerager</option>
+                    <option>Path of the Berserker</option>
+                    <option>Path of the Storm Herald</option>
+                    <option>Path of the Totem Warrior</option>
+                </optgroup>
+                <optgroup label="Bard">
+                    <option>College of Glamour</option>
+                    <option>College of Lore</option>
+                    <option>College of Swords</option>
+                    <option>College of Valor</option>
+                    <option>College of Whispers</option>
+                </optgroup>
+                <optgroup id="cc" label="Cleric">
+                    <option id="ccarca">Arcana Domain</option>
+                    <option>Death Domain</option>
+                    <option>Forge Domain</option>
+                    <option>Grave Domain</option>
+                    <option>Knowledge Domain</option>
+                    <option>Life Domain</option>
+                    <option>Light Domain</option>
+                    <option>Nature Domain</option>
+                    <option id="cctempe">Tempest Domain</option>
+                    <option>Trickery Domain</option>
+                    <option>War Domain</option>
+                </optgroup>
+                <optgroup id="dd" label="Druid">
+                    <option>Circle of Dreams</option>
+                    <option>Cirle of the Land</option>
+                    <option>Cirle of the Moon</option>
+                    <option>Cirle of the Shepherd</option>
+                    <option>Cirle of the Spores</option>
+                    <option>Cirle of the Twilight</option>
+                </optgroup>
+                <optgroup id="fr" label="Fighter">
+                    <option>Arcane Archer</option>
+                    <option id="frbatl">Battle Master</option>
+                    <option>Cavalier</option>
+                    <option>Champion</option>
+                    <option>Eldritch Knight</option>
+                    <option>Samurai</option>
+                </optgroup>
+                <optgroup id="mn" label="Monk">
+                    <option>Way of the Drunken Master</option>
+                    <option>Way of the Four Elements</option>
+                    <option>Way of the Kensei</option>
+                    <option>Way of the Long Death</option>
+                    <option>Way of the Open Hand</option>
+                    <option>Way of the Shadow</option>
+                    <option>Way of the Sun Soul</option>
+                </optgroup>
+                <optgroup id="pn" label="Paladin">
+                    <option id="pnanci">Oath of the Ancients</option>
+                    <option>Oath of Conquest</option>
+                    <option>Oath of the Crown</option>
+                    <option>Oath of Devotion</option>
+                    <option>Oath of Redemption</option>
+                    <option>Oath of Vengeance</option>
+                    <option>Oathbreaker</option>
+                </optgroup>
+                <optgroup id="rr" label="Ranger">
+                    <option>Beast Master</option>
+                    <option>Gloom Stalker</option>
+                    <option>Horizon Walker</option>
+                    <option>Hunter</option>
+                    <option>Monster Slayer</option>
+                </optgroup>
+                <optgroup id="re" label="Rogue">
+                    <option>Arcane Trickster</option>
+                    <option>Assassin</option>
+                    <option>Inquisitive</option>
+                    <option id="remast">Mastermind</option>
+                    <option>Scout</option>
+                    <option>Swashbuckler</option>
+                    <option>Thief</option>
+                </optgroup>
+                <optgroup id="sr" label="Sorcerer">
+                    <option>Divine Soul</option>
+                    <option>Draconic Bloodline</option>
+                    <option>Shadow Magic</option>
+                    <option>Stone Sorcery</option>
+                    <option>Storm Sorcery</option>
+                    <option>Wild Magic</option>
+                </optgroup>
+                <optgroup id="wk" label="Warlock">
+                    <option>The Archfey</option>
+                    <option>The Celestial</option>
+                    <option>The Fiend</option>
+                    <option>The Great Old One</option>
+                    <option>The Hexblade</option>
+                    <option>The Undying</option>
+                </optgroup>
+                <optgroup id="wd" label="Wizard">
+                    <option>Bladesinging</option>
+                    <option>School of Abjuration</option>
+                    <option>School of Conjuration</option>
+                    <option>School of Divination</option>
+                    <option>School of Enchantment</option>
+                    <option>School of Evocation</option>
+                    <option>School of Illusion</option>
+                    <option>School of Necromancy</option>
+                    <option>School of Transmutation</option>
+                    <option id="wdwarm">War Magic</option>
+                </optgroup>
+            </select>
+            <label for="classlevel">Class Level: </label>
+            <input type="number" id="number" name="classlevel" value="1" min="1" max="20">
+        </div>
+
+        <!-- <div>
+            <label for="multiclassname">Multi Class Name: </label>
+            <select name="classname2">
+                <option value="" selected disabled hidden>Choose here</option>
+                <optgroup id="bn" label="Barbarian">
+                    <option> Path of the Ancestral Guardian</option>
+                    <option>Path of the Battlerager</option>
+                    <option>Path of the Berserker</option>
+                    <option>Path of the Storm Herald</option>
+                    <option>Path of the Totem Warrior</option>
+                </optgroup>
+                <optgroup label="Bard">
+                    <option>College of Glamour</option>
+                    <option>College of Lore</option>
+                    <option>College of Swords</option>
+                    <option>College of Valor</option>
+                    <option>College of Whispers</option>
+                </optgroup>
+                <optgroup id="cc" label="Cleric">
+                    <option id="ccarca">Arcana Domain</option>
+                    <option>Death Domain</option>
+                    <option>Forge Domain</option>
+                    <option>Grave Domain</option>
+                    <option>Knowledge Domain</option>
+                    <option>Life Domain</option>
+                    <option>Light Domain</option>
+                    <option>Nature Domain</option>
+                    <option id="cctempe">Tempest Domain</option>
+                    <option>Trickery Domain</option>
+                    <option>War Domain</option>
+                </optgroup>
+                <optgroup id="dd" label="Druid">
+                    <option>Circle of Dreams</option>
+                    <option>Cirle of the Land</option>
+                    <option>Cirle of the Moon</option>
+                    <option>Cirle of the Shepherd</option>
+                    <option>Cirle of the Spores</option>
+                    <option>Cirle of the Twilight</option>
+                </optgroup>
+                <optgroup id="fr" label="Fighter">
+                    <option>Arcane Archer</option>
+                    <option id="frbatl">Battle Master</option>
+                    <option>Cavalier</option>
+                    <option>Champion</option>
+                    <option>Eldritch Knight</option>
+                    <option>Samurai</option>
+                </optgroup>
+                <optgroup id="mn" label="Monk">
+                    <option>Way of the Drunken Master</option>
+                    <option>Way of the Four Elements</option>
+                    <option>Way of the Kensei</option>
+                    <option>Way of the Long Death</option>
+                    <option>Way of the Open Hand</option>
+                    <option>Way of the Shadow</option>
+                    <option>Way of the Sun Soul</option>
+                </optgroup>
+                <optgroup id="pn" label="Paladin">
+                    <option id="pnanci">Oath of the Ancients</option>
+                    <option>Oath of Conquest</option>
+                    <option>Oath of the Crown</option>
+                    <option>Oath of Devotion</option>
+                    <option>Oath of Redemption</option>
+                    <option>Oath of Vengeance</option>
+                    <option>Oathbreaker</option>
+                </optgroup>
+                <optgroup id="rr" label="Ranger">
+                    <option>Beast Master</option>
+                    <option>Gloom Stalker</option>
+                    <option>Horizon Walker</option>
+                    <option>Hunter</option>
+                    <option>Monster Slayer</option>
+                </optgroup>
+                <optgroup id="re" label="Rogue">
+                    <option>Arcane Trickster</option>
+                    <option>Assassin</option>
+                    <option>Inquisitive</option>
+                    <option id="remast">Mastermind</option>
+                    <option>Scout</option>
+                    <option>Swashbuckler</option>
+                    <option>Thief</option>
+                </optgroup>
+                <optgroup id="sr" label="Sorcerer">
+                    <option>Divine Soul</option>
+                    <option>Draconic Bloodline</option>
+                    <option>Shadow Magic</option>
+                    <option>Stone Sorcery</option>
+                    <option>Storm Sorcery</option>
+                    <option>Wild Magic</option>
+                </optgroup>
+                <optgroup id="wk" label="Warlock">
+                    <option>The Archfey</option>
+                    <option>The Celestial</option>
+                    <option>The Fiend</option>
+                    <option>The Great Old One</option>
+                    <option>The Hexblade</option>
+                    <option>The Undying</option>
+                </optgroup>
+                <optgroup id="wd" label="Wizard">
+                    <option>Bladesinging</option>
+                    <option>School of Abjuration</option>
+                    <option>School of Conjuration</option>
+                    <option>School of Divination</option>
+                    <option>School of Enchantment</option>
+                    <option>School of Evocation</option>
+                    <option>School of Illusion</option>
+                    <option>School of Necromancy</option>
+                    <option>School of Transmutation</option>
+                    <option id="wdwarm">War Magic</option>
+                </optgroup>
+            </select>
+            <label for="classlevel">Multi Class Level: </label>
+            <input type="number" id="number" name="multiclasslevel" value="" min="0" max="20">
+        </div>
+        <div>
+            <label for="mc2name">Third Class Name: </label>
+            <select name="classname">
+                <option value="" selected disabled hidden>Choose here</option>
+                <optgroup id="bn" label="Barbarian">
+                    <option> Path of the Ancestral Guardian</option>
+                    <option>Path of the Battlerager</option>
+                    <option>Path of the Berserker</option>
+                    <option>Path of the Storm Herald</option>
+                    <option>Path of the Totem Warrior</option>
+                </optgroup>
+                <optgroup label="Bard">
+                    <option>College of Glamour</option>
+                    <option>College of Lore</option>
+                    <option>College of Swords</option>
+                    <option>College of Valor</option>
+                    <option>College of Whispers</option>
+                </optgroup>
+                <optgroup id="cc" label="Cleric">
+                    <option id="ccarca">Arcana Domain</option>
+                    <option>Death Domain</option>
+                    <option>Forge Domain</option>
+                    <option>Grave Domain</option>
+                    <option>Knowledge Domain</option>
+                    <option>Life Domain</option>
+                    <option>Light Domain</option>
+                    <option>Nature Domain</option>
+                    <option id="cctempe">Tempest Domain</option>
+                    <option>Trickery Domain</option>
+                    <option>War Domain</option>
+                </optgroup>
+                <optgroup id="dd" label="Druid">
+                    <option>Circle of Dreams</option>
+                    <option>Cirle of the Land</option>
+                    <option>Cirle of the Moon</option>
+                    <option>Cirle of the Shepherd</option>
+                    <option>Cirle of the Spores</option>
+                    <option>Cirle of the Twilight</option>
+                </optgroup>
+                <optgroup id="fr" label="Fighter">
+                    <option>Arcane Archer</option>
+                    <option id="frbatl">Battle Master</option>
+                    <option>Cavalier</option>
+                    <option>Champion</option>
+                    <option>Eldritch Knight</option>
+                    <option>Samurai</option>
+                </optgroup>
+                <optgroup id="mn" label="Monk">
+                    <option>Way of the Drunken Master</option>
+                    <option>Way of the Four Elements</option>
+                    <option>Way of the Kensei</option>
+                    <option>Way of the Long Death</option>
+                    <option>Way of the Open Hand</option>
+                    <option>Way of the Shadow</option>
+                    <option>Way of the Sun Soul</option>
+                </optgroup>
+                <optgroup id="pn" label="Paladin">
+                    <option id="pnanci">Oath of the Ancients</option>
+                    <option>Oath of Conquest</option>
+                    <option>Oath of the Crown</option>
+                    <option>Oath of Devotion</option>
+                    <option>Oath of Redemption</option>
+                    <option>Oath of Vengeance</option>
+                    <option>Oathbreaker</option>
+                </optgroup>
+                <optgroup id="rr" label="Ranger">
+                    <option>Beast Master</option>
+                    <option>Gloom Stalker</option>
+                    <option>Horizon Walker</option>
+                    <option>Hunter</option>
+                    <option>Monster Slayer</option>
+                </optgroup>
+                <optgroup id="re" label="Rogue">
+                    <option>Arcane Trickster</option>
+                    <option>Assassin</option>
+                    <option>Inquisitive</option>
+                    <option id="remast">Mastermind</option>
+                    <option>Scout</option>
+                    <option>Swashbuckler</option>
+                    <option>Thief</option>
+                </optgroup>
+                <optgroup id="sr" label="Sorcerer">
+                    <option>Divine Soul</option>
+                    <option>Draconic Bloodline</option>
+                    <option>Shadow Magic</option>
+                    <option>Stone Sorcery</option>
+                    <option>Storm Sorcery</option>
+                    <option>Wild Magic</option>
+                </optgroup>
+                <optgroup id="wk" label="Warlock">
+                    <option>The Archfey</option>
+                    <option>The Celestial</option>
+                    <option>The Fiend</option>
+                    <option>The Great Old One</option>
+                    <option>The Hexblade</option>
+                    <option>The Undying</option>
+                </optgroup>
+                <optgroup id="wd" label="Wizard">
+                    <option>Bladesinging</option>
+                    <option>School of Abjuration</option>
+                    <option>School of Conjuration</option>
+                    <option>School of Divination</option>
+                    <option>School of Enchantment</option>
+                    <option>School of Evocation</option>
+                    <option>School of Illusion</option>
+                    <option>School of Necromancy</option>
+                    <option>School of Transmutation</option>
+                    <option id="wdwarm">War Magic</option>
+                </optgroup>
+            </select>
+            <label for="mc2level">Third Class Level: </label>
+            <input type="number" id="number" name="mc3level" value="" min="0" max="20">
+        </div>
+
+        </fieldset>
+    </div> -->
+    <div> 
+    <fieldset class="charcreate" id="charstats">
+        <div>
+            <label for="AC">Armor Class: </label>
+            <input type="number" id="number" name="AC" value="1" min="1">
+            <label for="HP">Hit Points: </label>
+            <input type="number" id="number" name="HP" value="1" min="1">
+        </div>
+        <div>
+            <label for="str">Strength: </label>
+            <input type="number" id="str" name="str" value="1" min="1" max="30">
+            <label>Save:</label>
+            <input type="radio" id="strSV" name="str">
+        </div>
+        <div>
+            <label for="dex">Dexterity: </label>
+            <input type="number" id="dex" name="dex" value="1" min="1" max="30">
+            <label>Save:</label>
+            <input type="radio" id="dexSV" name="dex">
+        </div>
+        <div>
+            <label for="con">Constitution: </label>
+            <input type="number" id="con" name="con" value="1" min="1" max="30">
+            <label>Save:</label>
+            <input type="radio" id="conSV" name="con">
+        </div>
+        <div>
+            <label for="int">Intelligence: </label>
+            <input type="number" id="int" name="int" value="1" min="1" max="30">
+            <label>Save:</label>
+            <input type="radio" id="intSV" name="int">
+        </div>
+        <div>
+            <label for="wis">Wisdom: </label>
+            <input type="number" id="wis" name="wis" value="1" min="1" max="30">
+            <label>Save:</label>
+            <input type="radio" id="wisSV" name="wis">
+        </div>
+        <div>
+            <label for="cha">Charisma: </label>
+            <input type="number" id="cha" name="cha" value="1" min="1" max="30">
+            <label>Save:</label>
+            <input type="radio" id="chaSV" name="cha">
+        </div>
+    </fieldset>
+    </div>
+
+    <!-- First four letters + "p" for each proficiency as ID, + "e" for expertise  -->
+        <div>
+        <fieldset class="charcreate" id="proficiencies">
+        <div>
+            <input type="checkbox" name="athl" value="athlp">Athletics
+            <input type="checkbox" name="athl" value="athle">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="acro" value="acrop">Acrobatics
+            <input type="checkbox" name="acro" value="acroe">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="slei" value="sleip">Sleight of Hand
+            <input type="checkbox" name="slei" value="sleie">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="stea" value="steap">Stealth
+            <input type="checkbox" name="stea" value="steae">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="arca" value="arcap">Arcana
+            <input type="checkbox" name="arca" value="arcae">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="hist" value="histp">Histoy
+            <input type="checkbox" name="hist" value="histe">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="inve" value="invep">Investigation
+            <input type="checkbox" name="inve" value="invee">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="natu" value="natup">Nature
+            <input type="checkbox" name="natu" value="natue">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="reli" value="relip">Religion
+            <input type="checkbox" name="reli" value="relie">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="anim" value="animp">Animal Handling
+            <input type="checkbox" name="anum" value="anime">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="insi" value="insip">Insight
+            <input type="checkbox" name="insi" value="insie">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="medi" value="medip">Medicine
+            <input type="checkbox" name="medi" value="medie">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="athl" value="athlp">Athletics
+            <input type="checkbox" name="athl" value="athle">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="perc" value="percp">Perception
+            <input type="checkbox" name="perc" value="perce">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="surv" value="survp">Survival
+            <input type="checkbox" name="surv" value="surve">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="dece" value="decep">Deception
+            <input type="checkbox" name="dece" value="decee">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="inti" value="intip">Intimidation
+            <input type="checkbox" name="inti" value="intie">Expertise
+        </div>
+        <div>
+            <input type="checkbox" name="pers" value="persp">Persuasion
+            <input type="checkbox" name="pers" value="perse">Expertise
+        </div>
+        </fieldset>
+    <button class="charcreate" type="submit">Send It!</button>
+    </form>
+    <div class="results__display"></div>
+
+</body>
+<footer>
+        <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+        <script src="assets/js/chardata.js"></script>
+
+</footer>
