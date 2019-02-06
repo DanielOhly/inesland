@@ -6,10 +6,17 @@ var config = {
     projectId: "inesland-granimingul",
     storageBucket: "",
     messagingSenderId: "630585231717"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
-database= firebase.database();
+const database = firebase.database();
+
+let data = "";
+let charP = [];
+
+
+
+
 
 //Checks that element has a non empty name and value property
 const isValidElement = element => {
@@ -20,7 +27,7 @@ const isCheckbox = element => element.type === 'checkbox';
 const isMultiSelect = element => element.options && element.multiple;
 
 //Checks if checkboxes/radios are clicked
-const isValidValue = element=> {
+const isValidValue = element => {
     return (!['checkbox', 'radio'].includes(element.type) || element.checked);
 };
 
@@ -30,54 +37,94 @@ const getSelectValues = options => [].reduce.call(options, (values, option) => {
 }, []);
 
 //Retrives input data from form and returns it as JSON obj
-const formtoJSON = elements=> [].reduce.call(elements,(data, element) => {
-    
+const formtoJSON = elements => [].reduce.call(elements, (data, element) => {
+
     //Makes sure element has required properties
-    if(isValidElement(element) && isValidValue(element)){
-        
-        
+    if (isValidElement(element) && isValidValue(element)) {
+
         //Passing to check if fields have more than one value, stores as array
         if (isCheckbox(element)) {
             data[element.name] = (data[element.name] || []).concat(element.value);
-        } else if( isMultiSelect(element)){
+        } else if (isMultiSelect(element)) {
             data[element.name] = getSelectValues(element);
         } else {
             data[element.name] = element.value;
-        }   
+        }
     }
     return data
 }, {});
 
 // Handler function to prevent default submissions and run script./
 const handleFormSubmit = event => {
-   //Stop the form from submitting, holding for AJAX 
+    //Stop the form from submitting, holding for AJAX 
     event.preventDefault();
 
-    //TODO: Call our function to get the form data.
-    const data=formtoJSON(form.elements);
-    database.ref('Players/' + data.playername).push({
-        CharacterName: data.characterfirstname+ " " + data.characterepithet+" " + data.characterlastname})
-        ;
-    //AS DEMO: Print the form data onscreen as a formatted JSON obj.
-    const dataContainer = document.getElementsByClassName("results__display")[0];
-    //Use JSON.Stringify() to make the output valid, human readable JSON
-    dataContainer.textContent = JSON.stringify(data, null, " ");
+    //Gathering data from form, turning into JSON.
+    const data = formtoJSON(form.elements);
+//Accessing data JSON, structuring data
+    let playerName = data.playername
+    let characterName = data.charactername;
+    //Allowing all data to be sent to Firebase, storing as boolean to allow null info to pass.
+    let charSV = {
+        strSV: Boolean(data.strSV),
+        dexSV: Boolean(data.dexSV),
+        conSV: Boolean(data.conSV),
+        wisSV: Boolean(data.wisSV),
+        intSV: Boolean(data.intSV),
+        chaSV: Boolean(data.chaSV)
+    }
+    //Giving an "OR" to each aspect, so "undefined" can pass
+    let charP ={
+        Athl: data.athl || "",
+        Acro: data.acro || "", 
+        Slei: data.slei || "", 
+        Stea: data.stea || "",
+        Arca: data.arca || "",
+        Hist: data.hist || "",
+        Inve: data.inve || "",
+        Natu: data.natu || "",
+        Reli: data.reli || "",
+        Anim: data.anim || "", 
+        Insi: data.insi || "", 
+        Medi: data.medi || "", 
+        Perc: data.perc || "", 
+        Surv: data.surv || "", 
+        Dece: data.dece || "", 
+        Inti: data.inti || "",
+        Perf: data.perf || "", 
+        Pers: data.pers || ""};
+
+        
+
+
+
+
+
+
+
+
+
+    const dataUse = JSON.stringify(data);
+    let charCore = {
+        Campaign: data.campaignname,
+        Name: characterName,
+        Class: data.classname,
+        SubClass: data.subclassname,
+        Level: data.classlevel,
+        HP: data.HP,
+        AC: data.AC,
+        STR: data.str,
+        DEX: data.dex,
+        CON: data.con,
+        WIS: data.wis,
+        INT: data.int,
+        CHA: data.cha,
+        SV: charSV,
+        Prof: charP
+    }
+    //Pushing the Form info to database
+    database.ref('Players/' + playerName).child(characterName).set(charCore);
 };
 
 const form = document.getElementsByClassName('charcreate')[0];
 form.addEventListener("submit", handleFormSubmit);
-
-//Adding Data to page
-var charName= database.ref("Torg")
-
-
-// database.ref().on("child_added", function(snapshot){
-//     document.getElementsByName("results__display");
-// })
-
-
-
-
-
-
-

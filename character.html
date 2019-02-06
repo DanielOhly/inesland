@@ -1,38 +1,112 @@
-<head>
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
 
-</head>
+<script>
+    // Initialize Firebase
+var config = {
+    apiKey: "AIzaSyDTfRaqpHHlLBE24_vEJyDkIgr2tMZZUNA",
+    authDomain: "inesland-granimingul.firebaseapp.com",
+    databaseURL: "https://inesland-granimingul.firebaseio.com",
+    projectId: "inesland-granimingul",
+    storageBucket: "",
+    messagingSenderId: "630585231717"
+};
+firebase.initializeApp(config);
 
+let databasePlayer = firebase.database().ref();
+function databaseCharacter(value) { firebase.database().ref("/Players" + value)}
+let makeChar= "";
+
+
+
+//Displaying Players from the Database
+databasePlayer.on("child_added", function(data, prevChildKey) {
+    let showChar = data.toJSON();
+    let makeChar= Object.keys(showChar)
+    console.log(makeChar)
+    const stringChar= (Array.from(makeChar))
+    console.log(stringChar.length)
+    console.log(stringChar)
+
+
+    // for( var i=0; i< stringChar.length; i++){
+    // const whyNot= stringChar[i]
+    
+    function delay(){
+        return new Promise(resolve => setTimeout(resolve, 300));
+    }
+    
+    async function delayedLog(item){
+        await delay();
+        console.log(item);
+    }
+    
+    async function processArray(stringChar) {
+        stringChar.forEach(async(player)=>{
+            await delayedLog(player);
+    //    {document.getElementById("playerholder").innerHTML="<div id="+player+">" + player + "</div>"}
+    //     })
+    })
+    console.log("Done!")
+    };
+
+processArray()
+});
+    
+    
+    
+
+
+
+    // function playerPrint(player){
+    // };
+    // const printPlayer= stringChar.forEach(playerPrint);
+
+
+
+// databaseCharacter.on("child_added", function(data, prevChildKey) {
+//     let showChar = data.toJSON();
+//     console.log(showChar)
+//     let makeChar= Object.keys(showChar);
+//     console.log(makeChar)
+
+//     let printChar = makeChar.forEach( print=>
+//         document.getElementById("charholder").innerHTML="<div>"+print+"</div>");
+    
+//     // let eachChar= touchChar.forEach();
+//     // console.log(eachChar)
+    
+
+      
+
+      
+//     // console.log(Object.makeChar)
+     
+
+
+//     return makeChar;
+// });
+
+
+
+// displayChar.once("value")
+//     .then(function(snapshot){
+//         var campaign= snapshot.val();
+        // console.log(displayChar);
+        // console.log(campaign);
+        // snapshot.forEach(function(childSnapshot){
+        // var character= childSnapshot.toJSON();
+        // console.log(character);
+    // })
+    
+
+        // })
+
+    // })
+
+</script>
 <body>
-    <div class="charname"></div>
-
-    <div class="charinfo">
-
-    </div>
-
-
-
+    Hey Dog
+    <div id="playerholder"></div>
+    <div id="charholder"></div>
+    <div id="charerrata"></div>
 </body>
-
-<footer>
-    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
-  <script>  
-        var config = {
-        apiKey: "AIzaSyDTfRaqpHHlLBE24_vEJyDkIgr2tMZZUNA",
-        authDomain: "inesland-granimingul.firebaseapp.com",
-        databaseURL: "https://inesland-granimingul.firebaseio.com",
-        projectId: "inesland-granimingul",
-        storageBucket: "",
-        messagingSenderId: "630585231717"
-      };
-      firebase.initializeApp(config);
-    
-    database= firebase.database();
-    
-  
-    const charbtn= document.getElementsByClassName("charname")
-    
-    
-    
-    
-    </script>
-</footer>
