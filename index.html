@@ -47,6 +47,40 @@
             </div>
 
             <div>
+                <label for="racetype">Race: </label>
+                <select onchange="displaySR(value)" id=racetype name="racetype">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="" disabled>Races</option>
+                    <option value="Aarakocra" id="noSR">Aarakocra</option>
+                    <option value="Aasimar" id="arSR">Aasimar</option>
+                    <option value="Bugbear" id="noSR">Bugbear</option>
+                    <option value="Dragonborn" id="dnSR">Dragonborn</option>
+                    <option value="Dwarf" id="dfSR">Dwarf</option>
+                    <option value="Elf" id="efSR">Elf</option>
+                    <option value="Firbolg" id="noSR">Firbolg</option>
+                    <option value="Genasi" id="giSR">Genasi</option>
+                    <option value="Gnome" id="geSR">Gnome</option>
+                    <option value="Goblin" id="noSR">Goblin</option>
+                    <option value="Goliath" id="noSR">Goliath</option>
+                    <option value="Halfling" id="hgSR">Halfling</option>
+                    <option value="Half-Elf" id="hfSR">Half-Elf</option>
+                    <option value="Half-Orc" id="noSR">Half-Orc</option>
+                    <option value="Hobgoblin" id="noSR">Hobgoblin</option>
+                    <option value="Human" id="hSR">Human</option>
+                    <option value="Kenku" id="noSR">Kenku</option>
+                    <option value="Kobold" id="noSR">Kobold</option>
+                    <option value="Orc" id="noSR">Orc</option>
+                    <option value="Tabaxi" id="noSR">Tabaxi</option>
+                    <option value="Triton" id="noSR">Triton</option>
+                    <option value="Tiefling" id="tgSR">Tiefling</option>
+                    <option value="Yuan-Ti" id="noSR">Yuan-Ti Pureblood</option>
+                </select>
+                <select id="subracename" name="subracename">
+                    <option value="" selected disabled>Sub Races</option>
+                </select>
+            </div>
+
+            <div>
                 <fieldset class="charcreate" id="charstats">
                     <div>
                         <label for="AC">Armor Class: </label>

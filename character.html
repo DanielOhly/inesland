@@ -65,20 +65,81 @@
             console.log(JSON.stringify(charStatRef))
             var $div = document.createElement("div");
             let charData = snap.val();
-           //Taking out false keys and pushing them to Array
-            let checkSV = charData.SV;
-            let holdSV = [];
-            for (var key in checkSV) {
-                if (checkSV[key] === false) {
-                    delete checkSV[key];
-                } else {
-                    holdSV.push(key);
+
+
+            //Getting Ability modifiers based on ability scores as per Player's Handbook
+            let abilityScore = charData.Ability;
+            let abilityMods = {};
+            for (var key in abilityScore) {
+                switch (abilityScore[key]) {
+                    case "1":
+                        abilityMods[key] = -5;
+                        break;
+                    case "2":
+                    case "3":
+                        abilityMods[key] = -4;
+                        break;
+                    case "4":
+                    case "5":
+                        abilityMods[key] = -3;
+                        break;
+                    case "6":
+                    case "7":
+                        abilityMods[key] = -2;
+                        break;
+                    case "8":
+                    case "9":
+                        abilityMods[key] = -1;
+                        break;
+                    case "10":
+                    case "11":
+                        abilityMods[key] = 0;
+                        break;
+                    case "12":
+                    case "13":
+                        abilityMods[key] = 1;
+                        break;
+                    case "14":
+                    case "15":
+                        abilityMods[key] = 2;
+                        break;
+                    case "16":
+                    case "17":
+                        abilityMods[key] = 3;
+                        break;
+                    case "18":
+                    case "19":
+                        abilityMods[key] = 4;
+                        break;
+                    case "20":
+                    case "21":
+                        abilityMods[key] = 5;
+                        break;
+                    case "22":
+                    case "23":
+                        abilityMods[key] = 6;
+                        break;
+                    case "24":
+                    case "25":
+                        abilityMods[key] = 7;
+                        break;
+                    case "26":
+                    case "27":
+                        abilityMods[key] = 8;
+                        break;
+                    case "28":
+                    case "29":
+                        abilityMods[key] = 9;
+                        break;
+                    case "30":
+                        abilityMods[key] = 10;
+                        break;
                 }
-            };
-            //Proficiency Amount Switch Case
+            }
+
+            //Proficiency Amount Switch Case, determining Proficiency amount by values in PHB
             let classLvl = charData.Level
             let proficiency = "";
-            console.log(classLvl)
             switch (classLvl) {
                 case "1":
                 case "2":
@@ -111,15 +172,113 @@
                     proficiency = 6
                     break;
                 default:
-                console.log("womp womp")
+                    console.log("womp womp")
+
             }
+
+            //Taking out false keys for Ability Score SV's and pushing them to Object
+            let checkSV = charData.SV;
+            let holdSV = {};
+            for (var key in checkSV) {
+                if (checkSV[key] === false) {
+                    delete checkSV[key];
+                } else {
+                    holdSV[key] = checkSV[key];
+                }
+            };
+            //Substituting boolean for numerical values based on Ability Modifiers and Proficiency
+            for (var key in holdSV){
+                switch(key){
+                    case "strSV":
+                    holdSV[key]= proficiency+abilityMods.STR
+                    break;
+                    case "dexSV":
+                    holdSV[key]= proficiency+abilityMods.DEX
+                    break;
+                    case "conSV":
+                    holdSV[key]= proficiency+abilityMods.CON
+                    break;
+                    case "intSV":
+                    holdSV[key]= proficiency+abilityMods.INT
+                    break;
+                    case "wisSV":
+                    holdSV[key]= proficiency+abilityMods.WIS
+                    break;
+                    case "chaSV":
+                    holdSV[key]= proficiency+abilityMods.CHA
+                    break;
+                }
+            }
+            //Check proficiency for null data, push valid data to new array
+            let checkProf = charData.Prof;
+            let holdProf = {};
+            for (var key in checkProf) {
+                if (checkProf[key] === "") {
+                    delete checkProf[key];
+                } else {
+                    holdProf[key] = checkProf[key];
+                }
+            };
+
+            //Changing Proficiency and Expertise checks to numerical values
+            for (var key in holdProf) {
+                if (holdProf[key].length === 2) {
+                    holdProf[key] = proficiency + proficiency
+                } else {
+                    holdProf[key] = proficiency
+                }
+            }
+            //Adding Proficincy values to Ability Score Modifiers
+            for (var key in holdProf){
+                switch (key) {
+                    case "Athl":
+                    holdProf[key]=holdProf[key]+abilityMods.STR
+                    break;
+                    case "Acro":
+                    case "Slei":
+                    case "Stea":
+                    holdProf[key]=holdProf[key]+abilityMods.DEX
+                    break;
+                    case "Arca":
+                    case "Hist":
+                    case "Inve":
+                    case "Natu":
+                    case "Reli":
+                    holdProf[key]=holdProf[key]+abilityMods.INT
+                    break;
+                    case "Anim":
+                    case "Insi":
+                    case "Medi":
+                    case "Perc":
+                    case "Surv":
+                    holdProf[key]=holdProf[key]+abilityMods.WIS
+                    break;
+                    case "Dece":
+                    case "Inti":
+                    case "Perf":
+                    case "Pers":
+                    holdProf[key]=holdProf[key]+abilityMods.CHA
+                    break;
+
+                }
+            }
+
+
+            
+            console.log(holdProf)
             console.log(holdSV)
-            console.log(proficiency)
+
+            console.log(abilityScore)
+            console.log(charData)
+            console.log(abilityMods.STR)
 
 
 
 
-        })
+
+
+
+        });
     };
 </script>
 

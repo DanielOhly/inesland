@@ -73,6 +73,14 @@ const handleFormSubmit = event => {
         intSV: Boolean(data.intSV),
         chaSV: Boolean(data.chaSV)
     }
+    let abilityMods= {
+        STR: data.str,
+        DEX: data.dex,
+        CON: data.con,
+        WIS: data.wis,
+        INT: data.int,
+        CHA: data.cha,
+    }
     //Giving an "OR" to each aspect, so "undefined" can pass
     let charP ={
         Athl: data.athl || "",
@@ -92,17 +100,8 @@ const handleFormSubmit = event => {
         Dece: data.dece || "", 
         Inti: data.inti || "",
         Perf: data.perf || "", 
-        Pers: data.pers || ""};
-
-        
-
-
-
-
-
-
-
-
+        Pers: data.pers || ""
+    };
 
     const dataUse = JSON.stringify(data);
     let charCore = {
@@ -114,12 +113,7 @@ const handleFormSubmit = event => {
         Level: data.classlevel,
         HP: data.HP,
         AC: data.AC,
-        STR: data.str,
-        DEX: data.dex,
-        CON: data.con,
-        WIS: data.wis,
-        INT: data.int,
-        CHA: data.cha,
+        Ability: abilityMods,
         SV: charSV,
         Prof: charP
     }
