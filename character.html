@@ -2,108 +2,127 @@
 
 <script>
     // Initialize Firebase
-var config = {
-    apiKey: "AIzaSyDTfRaqpHHlLBE24_vEJyDkIgr2tMZZUNA",
-    authDomain: "inesland-granimingul.firebaseapp.com",
-    databaseURL: "https://inesland-granimingul.firebaseio.com",
-    projectId: "inesland-granimingul",
-    storageBucket: "",
-    messagingSenderId: "630585231717"
-};
-firebase.initializeApp(config);
-
-let databasePlayer = firebase.database().ref();
-function databaseCharacter(value) { firebase.database().ref("/Players" + value)}
-let makeChar= "";
-
-
-
-//Displaying Players from the Database
-databasePlayer.on("child_added", function(data, prevChildKey) {
-    let showChar = data.toJSON();
-    let makeChar= Object.keys(showChar)
-    console.log(makeChar)
-    const stringChar= (Array.from(makeChar))
-    console.log(stringChar.length)
-    console.log(stringChar)
-
-
-    // for( var i=0; i< stringChar.length; i++){
-    // const whyNot= stringChar[i]
-    
-    function delay(){
-        return new Promise(resolve => setTimeout(resolve, 300));
-    }
-    
-    async function delayedLog(item){
-        await delay();
-        console.log(item);
-    }
-    
-    async function processArray(stringChar) {
-        stringChar.forEach(async(player)=>{
-            await delayedLog(player);
-    //    {document.getElementById("playerholder").innerHTML="<div id="+player+">" + player + "</div>"}
-    //     })
-    })
-    console.log("Done!")
+    var config = {
+        apiKey: "AIzaSyDTfRaqpHHlLBE24_vEJyDkIgr2tMZZUNA",
+        authDomain: "inesland-granimingul.firebaseapp.com",
+        databaseURL: "https://inesland-granimingul.firebaseio.com",
+        projectId: "inesland-granimingul",
+        storageBucket: "",
+        messagingSenderId: "630585231717"
     };
-
-processArray()
-});
-    
-    
-    
-
-
-
-    // function playerPrint(player){
-    // };
-    // const printPlayer= stringChar.forEach(playerPrint);
+    firebase.initializeApp(config);
+    const database = firebase.database()
+    let rootRef = firebase.database().ref();
+    let playerRef = database.ref("Players/");
+    let player = "";
+    let charStat = "";
 
 
-
-// databaseCharacter.on("child_added", function(data, prevChildKey) {
-//     let showChar = data.toJSON();
-//     console.log(showChar)
-//     let makeChar= Object.keys(showChar);
-//     console.log(makeChar)
-
-//     let printChar = makeChar.forEach( print=>
-//         document.getElementById("charholder").innerHTML="<div>"+print+"</div>");
-    
-//     // let eachChar= touchChar.forEach();
-//     // console.log(eachChar)
-    
-
-      
-
-      
-//     // console.log(Object.makeChar)
-     
+    let svCheck = ""
 
 
-//     return makeChar;
-// });
+    //Appends Player names to the page, allows them to be clicked to load their individual characters
+    playerRef.on("child_added", snap => {
+        const playerHolder = document.getElementById("playerholder");
+        let player = snap.key;
+        let $div = document.createElement("div");
+        $div.innerHTML = player;
+        $div.setAttribute = ("child-key", snap.key);
+        $div.addEventListener("click", playerClicked)
+        $div.id = (player)
+        playerHolder.append($div)
+    });
+    //Appends Individual player's characters to the page, will soon append their character's individual data to the page.
+    function playerClicked(e) {
+        var playerID = e.target.getAttribute("id");
+        const charRef = rootRef.child('Players/' + playerID + '/Character').orderByKey();
+        const charInfo = document.getElementById("charholder");
+        charInfo.innerHTML = "";
+        charRef.on("child_added", snap => {
+            console.log(playerID)
+            var $div = document.createElement("div");
+            let charBlock = snap.val();
+            let charName = charBlock.Name
+            console.log(charName);
+            charInfo.append($div)
+            $div.innerHTML = charName;
+            $div.addEventListener("click", charClicked)
+            $div.setAttribute = ("child-key", snap.key);
+            $div.className = playerID;
+            $div.id = charName
+            charInfo.append($div)
+        });
+    };
+    // Loads the Character's data/stats to the page
+    function charClicked(e) {
+        var playerID = e.target.getAttribute("class");
+        var charID = e.target.getAttribute("id")
+        console.log(playerID, charID)
+        var charDetail = document.getElementById("charerrata")
+        charDetail.innerHTML = ""
+        const charStatRef = firebase.database().ref('Players/' + playerID + '/Character/' + charID).orderByKey();
+        charStatRef.on("value", snap => {
+            console.log(JSON.stringify(charStatRef))
+            var $div = document.createElement("div");
+            let charData = snap.val();
+           //Taking out false keys and pushing them to Array
+            let checkSV = charData.SV;
+            let holdSV = [];
+            for (var key in checkSV) {
+                if (checkSV[key] === false) {
+                    delete checkSV[key];
+                } else {
+                    holdSV.push(key);
+                }
+            };
+            //Proficiency Amount Switch Case
+            let classLvl = charData.Level
+            let proficiency = "";
+            console.log(classLvl)
+            switch (classLvl) {
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                    proficiency = 2
+                    break
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                    proficiency = 3
+                    break;
+                case "9":
+                case "10":
+                case "11":
+                case "12":
+                    proficiency = 4
+                    break;
+                case "13":
+                case "14":
+                case "15":
+                case "16":
+                    proficiency = 5
+                    break;
+                case "17":
+                case "18":
+                case "19":
+                case "20":
+                    proficiency = 6
+                    break;
+                default:
+                console.log("womp womp")
+            }
+            console.log(holdSV)
+            console.log(proficiency)
 
 
 
-// displayChar.once("value")
-//     .then(function(snapshot){
-//         var campaign= snapshot.val();
-        // console.log(displayChar);
-        // console.log(campaign);
-        // snapshot.forEach(function(childSnapshot){
-        // var character= childSnapshot.toJSON();
-        // console.log(character);
-    // })
-    
 
-        // })
-
-    // })
-
+        })
+    };
 </script>
+
 <body>
     Hey Dog
     <div id="playerholder"></div>

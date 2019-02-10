@@ -62,7 +62,7 @@ const handleFormSubmit = event => {
     //Gathering data from form, turning into JSON.
     const data = formtoJSON(form.elements);
 //Accessing data JSON, structuring data
-    let playerName = data.playername
+    let playerName = data.playername;
     let characterName = data.charactername;
     //Allowing all data to be sent to Firebase, storing as boolean to allow null info to pass.
     let charSV = {
@@ -106,6 +106,7 @@ const handleFormSubmit = event => {
 
     const dataUse = JSON.stringify(data);
     let charCore = {
+        Player: playerName,
         Campaign: data.campaignname,
         Name: characterName,
         Class: data.classname,
@@ -123,7 +124,7 @@ const handleFormSubmit = event => {
         Prof: charP
     }
     //Pushing the Form info to database
-    database.ref('Players/' + playerName).child(characterName).set(charCore);
+    database.ref('Players/' + playerName).child('Character/' + characterName).set(charCore);
 };
 
 const form = document.getElementsByClassName('charcreate')[0];
