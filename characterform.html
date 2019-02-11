@@ -1,0 +1,433 @@
+<head>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+</head>
+
+<body>
+        <!-- <div id="sign-in"></div> -->
+
+    <div>
+        <form class="charcreate" id="playercontrol">
+            <fieldset>
+                <label class="charcreate" for="playername">Player Name</label>
+                <input class="charcreate" type="text" name="playername" id="sign-in">
+                <label class="charcreate" for="campaignname">Campaign Name: </label>
+                <input class="charcreate" type="text" name="campaignname" value="Duggenmoor">
+                <label for="characterfirstname">Character's Name: </label>
+                <input type="text" name="charactername" value="Grimgur">
+
+            </fieldset>
+    </div>
+
+    <!-- Class ID's = 1st letter and last letter/ -->
+    <!-- Subclas ID's = Class ID and first 4 letters of subclass, not counting flavor titles -->
+    <div>
+        <!--Class Names and Values-->
+        <fieldset class="charcreate" id="charclass">
+            <div>
+                <label for="classlevel">Class Level: </label>
+                <input type="number" id="number" name="classlevel" value="1" min="1" max="20">
+                <label for="classname">Class Name: </label>
+                <select onchange="displaySC(value)" id=classname name="classname">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="" disabled>Classes</option>
+                    <option value="Barbarian" id="bnSC">Barbarian</option>
+                    <option value="Bard" id="bdSC">Bard</option>
+                    <option value="Cleric" id="ccSC">Cleric</option>
+                    <option value="Druid" id="ddSC">Druid</option>
+                    <option value="Fighter" id="frSC">Fighter</option>
+                    <option value="Monk" id="mkSC">Monk</option>
+                    <option value="Paladin" id="pnSC">Paladin</option>
+                    <option value="Ranger" id="rrSC">Ranger</option>
+                    <option value="Rogue" id="reSC">Rogue</option>
+                    <option value="Sorcerer" id="srSC">Sorcerer</option>
+                    <option value="Warlock" id="wkSC">Warlock</option>
+                    <option value="Wizard" id="wdSC">Wizard</option>
+                </select>
+                <!-- Holder for Sublclasses and Values-->
+                <select id="subclassname" name="subclassname">
+                    <option value="" selected disabled>Sub Class</option>
+                </select>
+            </div>
+        <!--Race choice, and subclass selector-->
+        <fieldset class="charcreate" id="charrace">
+            <div>
+                <label for="racetype">Race: </label>
+                <select onchange="displaySR(value)" id=racetype name="racetype">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="" disabled>Races</option>
+                    <option value="Aarakocra" id="noSR">Aarakocra</option>
+                    <option value="Aasimar" id="arSR">Aasimar</option>
+                    <option value="Bugbear" id="noSR">Bugbear</option>
+                    <option value="Dragonborn" id="dnSR">Dragonborn</option>
+                    <option value="Dwarf" id="dfSR">Dwarf</option>
+                    <option value="Elf" id="efSR">Elf</option>
+                    <option value="Firbolg" id="noSR">Firbolg</option>
+                    <option value="Genasi" id="giSR">Genasi</option>
+                    <option value="Gnome" id="geSR">Gnome</option>
+                    <option value="Goblin" id="noSR">Goblin</option>
+                    <option value="Goliath" id="noSR">Goliath</option>
+                    <option value="Halfling" id="hgSR">Halfling</option>
+                    <option value="Half-Elf" id="hfSR">Half-Elf</option>
+                    <option value="Half-Orc" id="noSR">Half-Orc</option>
+                    <option value="Hobgoblin" id="noSR">Hobgoblin</option>
+                    <option value="Human" id="hSR">Human</option>
+                    <option value="Kenku" id="noSR">Kenku</option>
+                    <option value="Kobold" id="noSR">Kobold</option>
+                    <option value="Orc" id="noSR">Orc</option>
+                    <option value="Tabaxi" id="noSR">Tabaxi</option>
+                    <option value="Triton" id="noSR">Triton</option>
+                    <option value="Tiefling" id="tgSR">Tiefling</option>
+                    <option value="Yuan-Ti" id="noSR">Yuan-Ti Pureblood</option>
+                </select>
+                <select id="subracename" name="subracename">
+                    <option value="" selected disabled>Sub Races</option>
+                </select>
+            </div>
+        </fieldset>
+        <!--Input for AC/HP and Dropdown selectors for character stats-->
+        <fieldset class="charcreate" id="charstats">
+                    <div>
+                    <div>
+                        <!--Input fields for AC and HP-->
+                        <label for="AC">Armor Class: </label>
+                        <input type="number" id="number" name="AC" value="1" min="1">
+                        <label for="HP">Hit Points: </label>
+                        <input type="number" id="number" name="HP" value="1" min="1">
+                    </div>
+                   <fieldset>
+                    <div>
+                        <!--STR-->
+                    <div>
+                        <label for="str">Strength: </label>
+                        <select id="str" name="str">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+                        <!--DEX-->
+                    <div>
+                        <label for="dex">Dexterity:</label>
+                        <select id="dex" name="dex">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+                        <!--CON-->
+                    <div>
+                        <label for="con">Constitution: </label>
+                        <select id="con" name="con">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+                        <!--INT-->
+                    <div>
+                        <label for="int">Intelligence: </label>
+                        <select id="int" name="int">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+                        <!--WIS-->
+                    <div>
+                        <label for="wis">Wisdom: </label>
+                        <select id="wis" name="wis">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                        </select> 
+                    </div>
+                        <!--CHA-->
+                    <div>
+                        <label for="cha">Charisma: </label>
+                        <select id="str" name="cha">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                        </select> 
+                    </div>
+                    </div>
+                </fieldset>
+                    <!--Radio buttons for SV's, denote boolean when information is saved-->
+                    <div>
+                        <fieldset>
+                            <label>Saves:</label>
+                            <input type="checkbox" id="strSV" name="strSV">STR
+                            <input type="checkbox" id="dexSV" name="dexSV"> DEX
+                            <input type="checkbox" id="conSV" name="conSV"> CON
+                            <input type="checkbox" id="wisSV" name="wisSV"> WIS
+                            <input type="checkbox" id="intSV" name="intSV"> INT
+                            <input type="checkbox" id="chaSV" name="chaSV"> CHA
+                        </fieldset>
+                    </div>
+                </div>
+
+        </fieldset>
+        <!-- First four letters + "p" for each proficiency as ID, + "e" for expertise  -->
+        <div>
+                <fieldset class="charcreate" id="proficiencies">
+                    <div>
+                        <input type="checkbox" name="athl" value="athlp" onclick=makeExp("athlex","athl","athle")>Athletics
+                        <span id=athlex> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="acro" value="acrop" onclick=makeExp("acrox","acro","acroe")>Acrobatics
+                        <span id=acrox> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="slei" value="sleip" onclick=makeExp("sleix","slei","sleie")>Sleight
+                        of Hand
+                        <span id=sleix> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="stea" value="steap" onclick=makeExp("steax","stea","steae")>Stealth
+                        <span id=steax> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="arca" value="arcap" onclick=makeExp("arcax","arca","arcae")>Arcana
+                        <span id=aracax> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="hist" value="histp" onclick=makeExp("histx","hist","histe")>Histoy
+                        <span id=histx> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="inve" value="invep" onclick=makeExp("invex","inve","invee")>Investigation
+                        <span id=invex> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="natu" value="natup" onclick=makeExp("natux","natu","natue")>Nature
+                        <span id=natux> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="reli" value="relip" onclick=makeExp("relix","reli","relie")>Religion
+                        <span id=relix> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="anim" value="animp" onclick=makeExp("animx","anim","anime")>Animal
+                        Handling
+                        <span id=animx> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="insi" value="insip" onclick=makeExp("insix","insi","insie")>Insight
+                        <span id=insix> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="medi" value="medip" onclick=makeExp("medix","medi","medie")>Medicine
+                        <span id=medix> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="perc" value="percp" onclick=makeExp("percx","perc","perce")>Perception
+                        <span id=percx> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="surv" value="survp" onclick=makeExp("survx","surv","surve")>Survival
+                        <span id=survx> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="dece" value="decep" onclick=makeExp("decex","dece","decee")>Deception
+                        <span id=decex> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="inti" value="intip" onclick=makeExp("intix","inti","intie")>Intimidation
+                        <span id=intix> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="perf" value="perfp" onclick=makeExp("perfx","perf","perfe")>Performance
+                        <span id=perfx> </span>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="pers" value="persp" onclick=makeExp("persx","pers","perse")>Persuasion
+                        <span id=persx> </span>
+                    </div>
+                </fieldset>
+                <button class="charcreate" type="submit">Send It!</button>
+                <button class="viewchar" type="submit">Go to the Characters</button>
+                </form>
+            </div>
+
+
+</body>
+<footer>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <script src="assets/js/chardata.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/subclass.js"></script>
+
+
+</footer>

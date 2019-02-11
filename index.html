@@ -1,240 +1,47 @@
 <head>
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
 </head>
 
 <body>
+    <title>Welcome to Inesland</title>
+    <h1>Welcome to Inesland</h1>
 
-    <div>
-        <form class="charcreate" id="playercontrol">
-            <fieldset>
-                <label class="charcreate" for="playername">Player Name</label>
-                <input class="charcreate" type="text" name="playername" value="Skef Lars">
-                <label class="charcreate" for="campaignname">Campaign Name: </label>
-                <input class="charcreate" type="text" name="campaignname" value="Duggenmoor">
-                <label for="characterfirstname">Character's Name: </label>
-                <input type="text" name="charactername" value="Grimgur">
-
-            </fieldset>
-    </div>
-
-    <!-- Class ID's = 1st letter and last letter/ -->
-    <!-- Subclas ID's = Class ID and first 4 letters of subclass, not counting flavor titles -->
-    <div>
-        <fieldset class="charcreate" id="charclass">
-        <!--Class Names and Values-->
-            <div>
-                <label for="classlevel">Class Level: </label>
-                <input type="number" id="number" name="classlevel" value="1" min="1" max="20">
-                <label for="classname">Class Name: </label>
-                <select onchange="displaySC(value)" id=classname name="classname">
-                    <option value="" selected disabled hidden>Choose here</option>
-                    <option value="" disabled>Classes</option>
-                    <option value="Barbarian" id="bnSC">Barbarian</option>
-                    <option value="Bard" id="bdSC">Bard</option>
-                    <option value="Cleric" id="ccSC">Cleric</option>
-                    <option value="Druid" id="ddSC">Druid</option>
-                    <option value="Fighter" id="frSC">Fighter</option>
-                    <option value="Monk" id="mkSC">Monk</option>
-                    <option value="Paladin" id="pnSC">Paladin</option>
-                    <option value="Ranger" id="rrSC">Ranger</option>
-                    <option value="Rogue" id="reSC">Rogue</option>
-                    <option value="Sorcerer" id="srSC">Sorcerer</option>
-                    <option value="Warlock" id="wkSC">Warlock</option>
-                    <option value="Wizard" id="wdSC">Wizard</option>
-                </select>
-                <!-- Holder for Sublclasses and Values-->
-                <select id="subclassname" name="subclassname">
-                    <option value="" selected disabled>Sub Class</option>
-                </select>
-            </div>
-
-            <div>
-                <label for="racetype">Race: </label>
-                <select onchange="displaySR(value)" id=racetype name="racetype">
-                    <option value="" selected disabled hidden>Choose here</option>
-                    <option value="" disabled>Races</option>
-                    <option value="Aarakocra" id="noSR">Aarakocra</option>
-                    <option value="Aasimar" id="arSR">Aasimar</option>
-                    <option value="Bugbear" id="noSR">Bugbear</option>
-                    <option value="Dragonborn" id="dnSR">Dragonborn</option>
-                    <option value="Dwarf" id="dfSR">Dwarf</option>
-                    <option value="Elf" id="efSR">Elf</option>
-                    <option value="Firbolg" id="noSR">Firbolg</option>
-                    <option value="Genasi" id="giSR">Genasi</option>
-                    <option value="Gnome" id="geSR">Gnome</option>
-                    <option value="Goblin" id="noSR">Goblin</option>
-                    <option value="Goliath" id="noSR">Goliath</option>
-                    <option value="Halfling" id="hgSR">Halfling</option>
-                    <option value="Half-Elf" id="hfSR">Half-Elf</option>
-                    <option value="Half-Orc" id="noSR">Half-Orc</option>
-                    <option value="Hobgoblin" id="noSR">Hobgoblin</option>
-                    <option value="Human" id="hSR">Human</option>
-                    <option value="Kenku" id="noSR">Kenku</option>
-                    <option value="Kobold" id="noSR">Kobold</option>
-                    <option value="Orc" id="noSR">Orc</option>
-                    <option value="Tabaxi" id="noSR">Tabaxi</option>
-                    <option value="Triton" id="noSR">Triton</option>
-                    <option value="Tiefling" id="tgSR">Tiefling</option>
-                    <option value="Yuan-Ti" id="noSR">Yuan-Ti Pureblood</option>
-                </select>
-                <select id="subracename" name="subracename">
-                    <option value="" selected disabled>Sub Races</option>
-                </select>
-            </div>
-
-            <div>
-                <fieldset class="charcreate" id="charstats">
-                    <div>
-                        <label for="AC">Armor Class: </label>
-                        <input type="number" id="number" name="AC" value="1" min="1">
-                        <label for="HP">Hit Points: </label>
-                        <input type="number" id="number" name="HP" value="1" min="1">
-                    </div>
-                    <div>
-                        <label for="str">Strength: </label>
-                        <input type="number" id="str" name="str" value="1" min="1" max="30">
-                    </div>
-                    <div>
-                        <label for="dex">Dexterity: </label>
-                        <input type="number" id="dex" name="dex" value="1" min="1" max="30">
-                    </div>
-                    <div>
-                        <label for="con">Constitution: </label>
-                        <input type="number" id="con" name="con" value="1" min="1" max="30">
-                    </div>
-                    <div>
-                        <label for="int">Intelligence: </label>
-                        <input type="number" id="int" name="int" value="1" min="1" max="30">
-                    </div>
-                    <div>
-                        <label for="wis">Wisdom: </label>
-                        <input type="number" id="wis" name="wis" value="1" min="1" max="30">
-                    </div>
-                    <div>
-                        <label for="cha">Charisma: </label>
-                        <input type="number" id="cha" name="cha" value="1" min="1" max="30">
-                    </div>
-                    <div>
-                        <fieldset>
-                            <label>Saves:</label>
-                            <input type="checkbox" id="strSV" name="strSV">STR
-                            <input type="checkbox" id="dexSV" name="dexSV"> DEX
-                            <input type="checkbox" id="conSV" name="conSV"> CON
-                            <input type="checkbox" id="wisSV" name="wisSV"> WIS
-                            <input type="checkbox" id="intSV" name="intSV"> INT
-                            <input type="checkbox" id="chaSV" name="chaSV"> CHA
-                        </fieldset>
-
-                    </div>
-                </fieldset>
-            </div>
-
-            <script>
-                function makeExp(div, name, value){
-                   document.getElementById(div).innerHTML="<input type=\"checkbox\" name="+name+" value="+value+">"+"<span>Expertise</span>";
-                }
-                
-                </script>
-
-
-
-            <!-- First four letters + "p" for each proficiency as ID, + "e" for expertise  -->
-            <div>
-                <fieldset class="charcreate" id="proficiencies">
-                    <div>
-                        <input type="checkbox" name="athl" value="athlp" onclick=makeExp("athlex","athl","athle")>Athletics
-                        <span id=athlex> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="acro" value="acrop" onclick=makeExp("acrox","acro","acroe")>Acrobatics
-                        <span id=acrox> </span>                    
-                    </div>
-                    <div>
-                        <input type="checkbox" name="slei" value="sleip" onclick=makeExp("sleix","slei","sleie")>Sleight of Hand
-                        <span id=sleix> </span>
-                                        </div>
-                    <div>
-                        <input type="checkbox" name="stea" value="steap" onclick=makeExp("steax","stea","steae")>Stealth
-                        <span id=steax> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="arca" value="arcap" onclick=makeExp("arcax","arca","arcae")>Arcana
-                        <span id=aracax> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="hist" value="histp" onclick=makeExp("histx","hist","histe")>Histoy
-                        <span id=histx> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="inve" value="invep" onclick=makeExp("invex","inve","invee")>Investigation
-                        <span id=invex> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="natu" value="natup" onclick=makeExp("natux","natu","natue")>Nature
-                        <span id=natux> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="reli" value="relip"onclick=makeExp("relix","reli","relie")>Religion
-                        <span id=relix> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="anim" value="animp" onclick=makeExp("animx","anim","anime")>Animal Handling
-                        <span id=animx> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="insi" value="insip" onclick=makeExp("insix","insi","insie")>Insight
-                        <span id=insix> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="medi" value="medip" onclick=makeExp("medix","medi","medie")>Medicine
-                        <span id=medix> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="perc" value="percp" onclick=makeExp("percx","perc","perce")>Perception
-                        <span id=percx> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="surv" value="survp" onclick=makeExp("survx","surv","surve")>Survival
-                        <span id=survx> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="dece" value="decep" onclick=makeExp("decex","dece","decee")>Deception
-                        <span id=decex> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="inti" value="intip" onclick=makeExp("intix","inti","intie")>Intimidation
-                        <span id=intix> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="perf" value="perfp" onclick=makeExp("perfx","perf","perfe")>Performance
-                        <span id=perfx> </span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="pers" value="persp" onclick=makeExp("persx","pers","perse")>Persuasion
-                        <span id=persx> </span>
-                    </div>
-                </fieldset>
-                <button class="charcreate" type="submit">Send It!</button>
-                </form>
-            </div>
-            <div class="results__display"></div>
-            <div id=subclassname></div>
-
-            <script>
-                
-            </script>
-
-
-
-
-
+    <div id="firebaseui-auth-container"></div>
 </body>
-<footer>
-    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
-    <script src="assets/js/chardata.js"></script>
-    <script src="assets/js/subclass.js"></script>
 
+<footer>
+    <script src="assets/js/auth.js"></script>
+
+        <script>
+         var uiConfig = {
+        signInSuccessUrl: 'characterform.html',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          firebase.auth.GithubAuthProvider.PROVIDER_ID,
+          {provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          requireDisplayName: true}
+        ],
+        // tosUrl and privacyPolicyUrl accept either url string or a callback
+        // function.
+        // Terms of service url/callback.
+        tosUrl: '<your-tos-url>',
+        // Privacy policy url/callback.
+        privacyPolicyUrl: function() {
+          window.location.assign('<your-privacy-policy-url>');
+        }
+      };
+            // Initialize the FirebaseUI Widget using Firebase.
+            var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+
+        
+        </script>
 
 </footer>

@@ -1,21 +1,38 @@
-// Initialize Firebase
-var config = {
-    apiKey: "AIzaSyDTfRaqpHHlLBE24_vEJyDkIgr2tMZZUNA",
-    authDomain: "inesland-granimingul.firebaseapp.com",
-    databaseURL: "https://inesland-granimingul.firebaseio.com",
-    projectId: "inesland-granimingul",
-    storageBucket: "",
-    messagingSenderId: "630585231717"
-};
-firebase.initializeApp(config);
 
-const database = firebase.database();
+initApp = function() {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var uid = user.uid;
+        var phoneNumber = user.phoneNumber;
+        var providerData = user.providerData;
+        user.getIdToken().then(function(accessToken) {
+          document.getElementById('sign-in').value = displayName;
 
+        });
+      } else {
+        // User is signed out.
+        document.getElementById('sign-in-status').textContent = 'Signed out';
+        document.getElementById('sign-in').textContent = 'Sign in';
+        document.getElementById('account-details').textContent = 'null';
+      }
+    }, function(error) {
+      console.log(error);
+    });
+  };
+  window.addEventListener('load', function() {
+    initApp()
+
+  });
+
+let displayName="";
 let data = "";
 let charP = [];
-
-
-
+console.log(displayName)
 
 
 //Checks that element has a non empty name and value property

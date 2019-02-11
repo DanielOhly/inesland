@@ -1,5 +1,3 @@
-
-
 //Function to call specific Sub Class groups by option value
 function displaySC() {
     var selectorSC = document.getElementById("classname");
@@ -47,6 +45,7 @@ function displaySC() {
 //Barbarian
 function bnSC() {
     document.getElementById("subclassname").innerHTML = "<optgroup id=\"bnsc\" label=\"Barbarian\">" +
+        "<option>Barbarian</option>" +
         "<option>Path of the Ancestral Guardian</option>" +
         "<option>Path of the Battlerager</option>" +
         "<option>Path of the Berserker</option>" +
@@ -57,6 +56,7 @@ function bnSC() {
 //Bard
 function bdSC() {
     document.getElementById("subclassname").innerHTML = "<optgroup id=\"bdsc\" label=\"Bard\">" +
+        "<option>Bard</option>" +
         "<option>College of Glamour</option>" +
         "<option>College of Lore</option>" +
         "<option>College of Swords</option>" +
@@ -67,6 +67,7 @@ function bdSC() {
 //Cleric
 function ccSC() {
     document.getElementById("subclassname").innerHTML = "<optgroup id=\"ccsc\" label=\"Cleric\">" +
+        "<option>Cleric</option>" +
         "<option id=\"ccarca\">Arcana Domain</option>" +
         "<option>Death Domain</option>" +
         "<option>Forge Domain</option>" +
@@ -83,6 +84,7 @@ function ccSC() {
 //Druid
 function ddSC() {
     document.getElementById("subclassname").innerHTML = "<optgroup id=\"ddsc\" label=\"Druid\">" +
+        "<option>Druid</option>" +
         "<option>Circle of Dreams</option>" +
         "<option>Cirle of the Land</option>" +
         "<option>Cirle of the Moon</option>" +
@@ -94,6 +96,7 @@ function ddSC() {
 //Fighter
 function frSC() {
     document.getElementById("subclassname").innerHTML = "<optgroup id=\"fr\" label=\"Fighter\">" +
+        "<option>Fighter</option>" +
         "<option>Arcane Archer</option>" +
         "<option id=\"frbatl\">Battle Master</option>" +
         "<option>Cavalier</option>" +
@@ -105,6 +108,7 @@ function frSC() {
 //Monk
 function mkSC() {
     document.getElementById("subclassname").innerHTML = "<optgroup id=\"mksc\" label=\"Monk\">" +
+        "<option>Monk</option>" +
         "<option>Way of the Drunken Master</option>" +
         "<option>Way of the Four Elements</option>" +
         "<option>Way of the Kensei</option>" +
@@ -118,6 +122,7 @@ function mkSC() {
 function pnSC() {
     document.getElementById("subclassname").innerHTML =
         "<optgroup id=\"pnsc\" label=\"Paladin\">" +
+        "<option>Paladin</option>" +
         "<option id=\"pnanci\">Oath of the Ancients</option>" +
         "<option>Oath of Conquest</option>" +
         "<option>Oath of the Crown</option>" +
@@ -131,6 +136,7 @@ function pnSC() {
 function rrSC() {
     document.getElementById("subclassname").innerHTML =
         "<optgroup id=\"rrsc\" label=\"Ranger\">" +
+        "<option>Ranger</option>" +
         "<option>Beast Master</option>" +
         "<option>Gloom Stalker</option>" +
         "<option>Horizon Walker</option>" +
@@ -142,6 +148,7 @@ function rrSC() {
 function reSC() {
     document.getElementById("subclassname").innerHTML =
         "<optgroup id=\"resc\" label=\"Rogue\">" +
+        "<option>Rogue</option>" +
         "<option>Arcane Trickster</option>" +
         "<option>Assassin</option>" +
         "<option>Inquisitive</option>" +
@@ -155,6 +162,8 @@ function reSC() {
 function srSC() {
     document.getElementById("subclassname").innerHTML =
         "<optgroup id=\"srsc\" label=\"Sorcerer\">" +
+        "<option>Sorcerer</option>" +
+
         "<option>Divine Soul</option>" +
         "<option>Draconic Bloodline</option>" +
         "<option>Shadow Magic</option>" +
@@ -167,6 +176,7 @@ function srSC() {
 function wkSC() {
     document.getElementById("subclassname").innerHTML =
         "<optgroup id=\"wksc\" label=\"Warlock\">" +
+        "<option>Warlock</option>" +
         "<option>The Archfey</option>" +
         "<option>The Celestial</option>" +
         "<option>The Fiend</option>" +
@@ -179,6 +189,7 @@ function wkSC() {
 function wdSC() {
     document.getElementById("subclassname").innerHTML =
         "<optgroup id=\"wdsc\" label=\"Wizard\">" +
+        "<option>Wizard</option>" +
         "<option>Bladesinging</option>" +
         "<option>School of Abjuration</option>" +
         "<option>School of Conjuration</option>" +
@@ -230,7 +241,7 @@ function displaySR() {
         case "tgSR":
             tgSR();
             break;
-        
+
     }
 };
 //If the Race has no subrace, call this Function
@@ -355,7 +366,7 @@ function tgSR() {
 
 
 //Makes checkbox for Expertise if applicable
-function makeExp(div, name, value){
-    document.getElementById(div).innerHTML="<input type=\"checkbox\" name="+name+" value="+value+">"+"<span>Expertise</span>";
- }
- 
+//Bug!! Does not go away if unclicked
+function makeExp(div, name, value) {
+    document.getElementById(div).innerHTML = "<input type=\"checkbox\" name=" + name + " value=" + value + ">" + "<span>Expertise</span>";
+}
