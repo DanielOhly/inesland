@@ -1,6 +1,5 @@
-let displayName={};
 
-initApp = function() {
+//Gathers characters for specific log in
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         // User is signed in.
@@ -12,7 +11,18 @@ initApp = function() {
         var phoneNumber = user.phoneNumber;
         var providerData = user.providerData;
         user.getIdToken().then(function(accessToken) {
-          document.getElementById('sign-in').value = displayName;
+          let playerRef = database.ref("Players/" + displayName);
+          playerRef.on("child_added", snap => {
+            const playerHolder = document.getElementById("playerholder");
+            let player = displayName;
+            console.log(player)
+            let $div = document.createElement("div");
+            $div.innerHTML = player;
+            $div.setAttribute = ("child-key", snap.key);
+            $div.addEventListener("click", playerClicked)
+            $div.id = (player)
+            playerHolder.append($div)
+        });
         });
       } else {
         // User is signed out.
@@ -23,31 +33,18 @@ initApp = function() {
     }, function(error) {
       console.log(error);
     });
-  };
-  window.addEventListener('load', function() {
-    initApp()
 
-  });
+
 let rootRef = firebase.database().ref();
-let playerRef = database.ref("Players/");
 let player = "";
 let charStat = "";
 let svCheck = ""
-console.log(displayName)
+let displayName=""
 
 
 
 //Appends Player names to the page, allows them to be clicked to load their individual characters
-playerRef.on("child_added", snap => {
-    const playerHolder = document.getElementById("playerholder");
-    let player = snap.key;
-    let $div = document.createElement("div");
-    $div.innerHTML = player;
-    $div.setAttribute = ("child-key", snap.key);
-    $div.addEventListener("click", playerClicked)
-    $div.id = (player)
-    playerHolder.append($div)
-});
+
 //Appends Individual player's characters to the page, will soon append their character's individual data to the page.
 function playerClicked(e) {
     var playerID = e.target.getAttribute("id");
