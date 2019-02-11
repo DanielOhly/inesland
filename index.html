@@ -1,6 +1,7 @@
 <head>
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 <body>
@@ -22,6 +23,7 @@
     <!-- Subclas ID's = Class ID and first 4 letters of subclass, not counting flavor titles -->
     <div>
         <fieldset class="charcreate" id="charclass">
+        <!--Class Names and Values-->
             <div>
                 <label for="classlevel">Class Level: </label>
                 <input type="number" id="number" name="classlevel" value="1" min="1" max="20">
@@ -35,12 +37,14 @@
                     <option value="Druid" id="ddSC">Druid</option>
                     <option value="Fighter" id="frSC">Fighter</option>
                     <option value="Monk" id="mkSC">Monk</option>
+                    <option value="Paladin" id="pnSC">Paladin</option>
                     <option value="Ranger" id="rrSC">Ranger</option>
                     <option value="Rogue" id="reSC">Rogue</option>
                     <option value="Sorcerer" id="srSC">Sorcerer</option>
                     <option value="Warlock" id="wkSC">Warlock</option>
                     <option value="Wizard" id="wdSC">Wizard</option>
                 </select>
+                <!-- Holder for Sublclasses and Values-->
                 <select id="subclassname" name="subclassname">
                     <option value="" selected disabled>Sub Class</option>
                 </select>
@@ -115,8 +119,8 @@
                     <div>
                         <fieldset>
                             <label>Saves:</label>
-                            <input type="checkbox" id="strSV" name="strSV">Strength
-                            <input type="checkbox" id="dexSV" name="dexSV"> Dexterity
+                            <input type="checkbox" id="strSV" name="strSV">STR
+                            <input type="checkbox" id="dexSV" name="dexSV"> DEX
                             <input type="checkbox" id="conSV" name="conSV"> CON
                             <input type="checkbox" id="wisSV" name="wisSV"> WIS
                             <input type="checkbox" id="intSV" name="intSV"> INT
@@ -127,80 +131,89 @@
                 </fieldset>
             </div>
 
+            <script>
+                function makeExp(div, name, value){
+                   document.getElementById(div).innerHTML="<input type=\"checkbox\" name="+name+" value="+value+">"+"<span>Expertise</span>";
+                }
+                
+                </script>
+
+
+
             <!-- First four letters + "p" for each proficiency as ID, + "e" for expertise  -->
             <div>
                 <fieldset class="charcreate" id="proficiencies">
                     <div>
-                        <input type="checkbox" name="athl" value="athlp">Athletics
-                        <input type="checkbox" name="athl" value="athle">Expertise
+                        <input type="checkbox" name="athl" value="athlp" onclick=makeExp("athlex","athl","athle")>Athletics
+                        <span id=athlex> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="acro" value="acrop">Acrobatics
-                        <input type="checkbox" name="acro" value="acroe">Expertise
+                        <input type="checkbox" name="acro" value="acrop" onclick=makeExp("acrox","acro","acroe")>Acrobatics
+                        <span id=acrox> </span>                    
                     </div>
                     <div>
-                        <input type="checkbox" name="slei" value="sleip">Sleight of Hand
-                        <input type="checkbox" name="slei" value="sleie">Expertise
+                        <input type="checkbox" name="slei" value="sleip" onclick=makeExp("sleix","slei","sleie")>Sleight of Hand
+                        <span id=sleix> </span>
+                                        </div>
+                    <div>
+                        <input type="checkbox" name="stea" value="steap" onclick=makeExp("steax","stea","steae")>Stealth
+                        <span id=steax> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="stea" value="steap">Stealth
-                        <input type="checkbox" name="stea" value="steae">Expertise
+                        <input type="checkbox" name="arca" value="arcap" onclick=makeExp("arcax","arca","arcae")>Arcana
+                        <span id=aracax> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="arca" value="arcap">Arcana
-                        <input type="checkbox" name="arca" value="arcae">Expertise
+                        <input type="checkbox" name="hist" value="histp" onclick=makeExp("histx","hist","histe")>Histoy
+                        <span id=histx> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="hist" value="histp">Histoy
-                        <input type="checkbox" name="hist" value="histe">Expertise
+                        <input type="checkbox" name="inve" value="invep" onclick=makeExp("invex","inve","invee")>Investigation
+                        <span id=invex> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="inve" value="invep">Investigation
-                        <input type="checkbox" name="inve" value="invee">Expertise
+                        <input type="checkbox" name="natu" value="natup" onclick=makeExp("natux","natu","natue")>Nature
+                        <span id=natux> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="natu" value="natup">Nature
-                        <input type="checkbox" name="natu" value="natue">Expertise
+                        <input type="checkbox" name="reli" value="relip"onclick=makeExp("relix","reli","relie")>Religion
+                        <span id=relix> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="reli" value="relip">Religion
-                        <input type="checkbox" name="reli" value="relie">Expertise
+                        <input type="checkbox" name="anim" value="animp" onclick=makeExp("animx","anim","anime")>Animal Handling
+                        <span id=animx> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="anim" value="animp">Animal Handling
-                        <input type="checkbox" name="anum" value="anime">Expertise
+                        <input type="checkbox" name="insi" value="insip" onclick=makeExp("insix","insi","insie")>Insight
+                        <span id=insix> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="insi" value="insip">Insight
-                        <input type="checkbox" name="insi" value="insie">Expertise
+                        <input type="checkbox" name="medi" value="medip" onclick=makeExp("medix","medi","medie")>Medicine
+                        <span id=medix> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="medi" value="medip">Medicine
-                        <input type="checkbox" name="medi" value="medie">Expertise
+                        <input type="checkbox" name="perc" value="percp" onclick=makeExp("percx","perc","perce")>Perception
+                        <span id=percx> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="perc" value="percp">Perception
-                        <input type="checkbox" name="perc" value="perce">Expertise
+                        <input type="checkbox" name="surv" value="survp" onclick=makeExp("survx","surv","surve")>Survival
+                        <span id=survx> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="surv" value="survp">Survival
-                        <input type="checkbox" name="surv" value="surve">Expertise
+                        <input type="checkbox" name="dece" value="decep" onclick=makeExp("decex","dece","decee")>Deception
+                        <span id=decex> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="dece" value="decep">Deception
-                        <input type="checkbox" name="dece" value="decee">Expertise
+                        <input type="checkbox" name="inti" value="intip" onclick=makeExp("intix","inti","intie")>Intimidation
+                        <span id=intix> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="inti" value="intip">Intimidation
-                        <input type="checkbox" name="inti" value="intie">Expertise
+                        <input type="checkbox" name="perf" value="perfp" onclick=makeExp("perfx","perf","perfe")>Performance
+                        <span id=perfx> </span>
                     </div>
                     <div>
-                        <input type="checkbox" name="perf" value="perfp">Performance
-                        <input type="checkbox" name="perf" value="perfe">Expertise
-                    </div>
-                    <div>
-                        <input type="checkbox" name="pers" value="persp">Persuasion
-                        <input type="checkbox" name="pers" value="perse">Expertise
+                        <input type="checkbox" name="pers" value="persp" onclick=makeExp("persx","pers","perse")>Persuasion
+                        <span id=persx> </span>
                     </div>
                 </fieldset>
                 <button class="charcreate" type="submit">Send It!</button>
@@ -222,5 +235,6 @@
     <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
     <script src="assets/js/chardata.js"></script>
     <script src="assets/js/subclass.js"></script>
+
 
 </footer>

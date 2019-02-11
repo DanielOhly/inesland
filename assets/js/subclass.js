@@ -23,8 +23,8 @@ function displaySC() {
         case "mkSC":
             mkSC();
             break;
-        case "pdSC":
-            pdSC();
+        case "pnSC":
+            pnSC();
             break;
         case "rrSC":
             rrSC();
@@ -115,7 +115,7 @@ function mkSC() {
         "</optgroup>"
 }
 //Paladin
-function pdSC() {
+function pnSC() {
     document.getElementById("subclassname").innerHTML =
         "<optgroup id=\"pnsc\" label=\"Paladin\">" +
         "<option id=\"pnanci\">Oath of the Ancients</option>" +
@@ -237,7 +237,7 @@ function displaySR() {
 function noSR() {
     document.getElementById("subracename").innerHTML =
         "<optgroup id=\"noSR\" label=\"No Subraces Available\">" +
-        "<option value=\"\" selected disabled hidden>No Subraces Available</option>" +
+        "<option value=\"-\" selected>No Subraces Available</option>" +
         "</optgroup>"
 }
 //Aasimar
@@ -352,3 +352,10 @@ function tgSR() {
         "<option value=\"Zariel\">Zariel</option>" +
         "</optgroup>"
 }
+
+
+//Makes checkbox for Expertise if applicable
+function makeExp(div, name, value){
+    document.getElementById(div).innerHTML="<input type=\"checkbox\" name="+name+" value="+value+">"+"<span>Expertise</span>";
+ }
+ 

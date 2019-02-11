@@ -61,6 +61,7 @@ const handleFormSubmit = event => {
 
     //Gathering data from form, turning into JSON.
     const data = formtoJSON(form.elements);
+    console.log(data)
 //Accessing data JSON, structuring data
     let playerName = data.playername;
     let characterName = data.charactername;
@@ -73,6 +74,7 @@ const handleFormSubmit = event => {
         intSV: Boolean(data.intSV),
         chaSV: Boolean(data.chaSV)
     }
+    //Storing the Ability Scores into one object
     let abilityMods= {
         STR: data.str,
         DEX: data.dex,
@@ -102,12 +104,17 @@ const handleFormSubmit = event => {
         Perf: data.perf || "", 
         Pers: data.pers || ""
     };
+    let charRace={
+        Race: data.racetype,
+        Subrace: data.subracename
+    }
 
     const dataUse = JSON.stringify(data);
     let charCore = {
         Player: playerName,
         Campaign: data.campaignname,
         Name: characterName,
+        Race: charRace,
         Class: data.classname,
         SubClass: data.subclassname,
         Level: data.classlevel,
