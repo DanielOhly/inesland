@@ -270,7 +270,6 @@ function dnSR() {
         "<option value=\"Bronze\">Bronze</option>" +
         "<option value=\"Copper\">Copper</option>" +
         "<option value=\"Gold\">Gold</option>" +
-        "<option value=\"Gold\">Gold</option>" +
         "<option value=\"Green\">Green</option>" +
         "<option value=\"Red\">Red</option>" +
         "<option value=\"Silver\">Silver</option>" +

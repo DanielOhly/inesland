@@ -26,9 +26,9 @@
         });
       } else {
         // User is signed out.
-        document.getElementById('sign-in-status').textContent = 'Signed out';
-        document.getElementById('sign-in').textContent = 'Sign in';
-        document.getElementById('account-details').textContent = 'null';
+        // document.getElementById('sign-in-status').textContent = 'Signed out';
+        // document.getElementById('sign-in').textContent = 'Sign in';
+        // document.getElementById('account-details').textContent = 'null';
       }
     }, function(error) {
       console.log(error);
