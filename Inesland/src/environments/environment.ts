@@ -12,7 +12,6 @@ export const environment = {
     storageBucket: 'inesland-granimingul.appspot.com',
     messagingSenderId: '630585231717'
   }
-
 };
 
 /*

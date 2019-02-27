@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SubchoiceService } from './subchoice.service';
+import { CharacterService } from './character.service';
 
-describe('SubchoiceService', () => {
+describe('CharacterService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SubchoiceService = TestBed.get(SubchoiceService);
+    const service: CharacterService = TestBed.get(CharacterService);
     expect(service).toBeTruthy();
   });
 });

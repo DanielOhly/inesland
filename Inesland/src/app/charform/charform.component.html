@@ -1,35 +1,221 @@
 <div class="container">
-    <h1>Inesland Character Creation</h1>
+  <h1>Inesland Character Creation</h1>
 
-    <form>
+  <div>
+      {{ charSheet.playerName }}
+    </div>
 
-      <div class="form-group">
-        <label for="playerName">Player Name</label>
-        <input type="text" class="form-control" id="playerName" required name="playerName"
-        >
+  <form [formGroup]="charSheet"  (ngSubmit)="onSubmit(charSheet)">
+
+      <label for="playerName">Player Name</label>
+      <input type="text" class="form-control" id="playerName" required name="playerName" formControlName="playerName">
+
+      <label for="campaignName">Campaign Name: </label>
+      <input type="text" class="form-control" id="campaignName" required name="campaignName" formControlName="campaignName">
+
+      <label for="characterName">Character's Name: </label>
+      <input type="text" class="form-control" id="characterName" required name="characterName" formControlName="characterName">
+    
+    <!--Form Group for Character Race-->
+    <div class="form-group" formGroupName="charRace">
+      <div>I will put information about each race</div>
+      <label for="raceOpt">Race: </label>
+      <select class="form-control" name="raceOpt" id="raceOpt" (change)="displaySR(id)" formControlName="raceOpt">
+        <option *ngFor="let race of raceOpt" id={{race.id}} >{{race.name}}</option>
+      </select>
+      <div>I will put information about each sub race</div>
+      <label for="subRaceOpt">Sub Race: </label>
+      <select class="form-control" name="subRaceOpt" id="subRaceOpt" formControlName="subRaceOpt">
+      </select>
+    </div>
+
+    <!--Form Group for Class Level, Class choice, and subclass selector-->
+    <div class="form-group" formGroupName="charClass">
+      <label for="classlevel">Class Level: </label>
+      <select class="form-control" name="classLevel" formControlName="classLvl">
+        <option *ngFor="let lvl of classLvl" id={{lvl.value}} > {{lvl}} </option>
+      </select>
+    <div>Class Info</div>
+      <label for="classOpt">Class: </label>
+      <select class="form-control" name="classOpt" id="classOpt" (change)="displaySC(id)" formControlName="classOpt">
+        <option *ngFor="let class of classOpt" id={{class.id}} >{{class.name}}</option>
+      </select>
+    <div>Sub Class Info</div>
+      <label for="subClassOpt">Sub Class: </label>
+      <select class="form-control" name="subClassOpt" id="subClassOpt" formControlName="subClassOpt">
+      </select>
+    </div>
+      
+    <!--Input fields for AC and HP-->
+    <div>
+      <div>
+        HP and AC Info
+      </div>
+      <label for="AC">Armor Class: </label>
+      <input class="form-control" type="number" id="number" name="AC" value="1" min="1" formControlName="armorClass">
+      <label for="HP">Hit Points: </label>
+      <input class="form-control" type="number" id="number" name="HP" value="1" min="1" formControlName="hitPoints">
+    </div>
+  <div formGroupName="statArray">
+    <div>
+      Stat Array Info
+    </div>
+    <label>Saves:</label>
+    <p> This will say what your SV's are </p>
+    <div>
+      <label for="str">Strength: </label>
+      <select class="form-control" name="str" formControlName="str">
+        <option *ngFor="let array of statArray" id={{array.value}}> {{array}} </option>
+      </select>
+      <label for='strSV'>Strength Saving Throw</label>
+      <input type="checkbox" id="strSV" name="strSV" formControlName="strSV">
+    </div>
+    <div>
+      <label for="str">Dexterity: </label>
+      <select class="form-control" name="dex" formControlName="dex">
+        <option *ngFor="let array of statArray" id={{array.value}}> {{array}} </option>
+      </select>
+      <label for='dexSV'>Dexterity Saving Throw</label>
+      <input type="checkbox" id="dexSV" name="dexSV" formControlName="dexSV">
+    </div>
+    <div>
+      <label for="str">Constitution: </label>
+      <select class="form-control" name="con" formControlName="con">
+        <option *ngFor="let array of statArray" id={{array.value}}> {{array}} </option>
+      </select>
+      <label for='conSV'>Constitution Saving Throw</label>
+      <input type="checkbox" id="conSV" name="conSV" formControlName="conSV">
+    </div>
+    <div>
+      <label for="str">Wisdom: </label>
+      <select class="form-control" name="wis" formControlName="wis">
+        <option *ngFor="let array of statArray" id={{array.value}}> {{array}} </option>
+      </select>
+      <label for='wisSV'>Wisdom Saving Throw</label>
+      <input type="checkbox" id="wisSV" name="wisSV" formControlName="wisSV">
+    </div>
+    <div>
+      <label for="str">Intelligence: </label>
+      <select class="form-control" name="int" formControlName="int">
+        <option *ngFor="let array of statArray" id={{array.value}}> {{array}} </option>
+      </select>
+      <label for='intSV'>Intelligence Saving Throw</label>
+      <input type="checkbox" id="intSV" name="intSV" formControlName="intSV">
+    </div>
+    <div>
+      <label for="str">Charisma: </label>
+      <select class="form-control" name="cha" formControlName="cha">
+        <option *ngFor="let array of statArray" id={{array.value}}> {{array}} </option>
+      </select>
+      <label for='chaSV'>Charisma Saving Throw</label>
+      <input type="checkbox" id="chaSV" name="chaSV" formControlName="chaSV">
+    </div>
+  </div>
+
+
+
+    <div formGroupName="proficiencies">
+      <label>Proficiencies:</label>
+      <p> This will say what your Proficiencies's are </p>
+    <div>
+      <label for="athl">Athletics:</label>
+      <input type="checkbox" name="athl" value="athlp" formControlName="athl">
+      <span id=athlex> <label>Expertise?</label> <input type="checkbox" name="athl" value="athle"  formControlName="athle">
+      </span>
+    </div>
+    <div>
+      <label for="acro">Acrobatics:</label>
+      <input type="checkbox" name="acro" value="acrop" formControlName="acro">
+      <span id=acrox> <label>Expertise?</label> <input type="checkbox" name="acro" value="acroe"  formControlName="acroe"> </span>
+    </div>
+    <div>
+      <label for="slei">Sleight of Hand:</label>
+      <input type="checkbox" name="slei" value="sleip" formControlName="slei">
+      <span id=sleix> <label>Expertise?</label> <input type="checkbox" name="slei" value="sleie"  formControlName="sleie"> </span>
+    </div>
+    <div>
+      <label for="stea">Stealth:</label>
+      <input type="checkbox" name="stea" value="steap" formControlName="stea">
+      <span id=steax>  <label>Expertise?</label> <input type="checkbox" name="steae" value="steae"  formControlName="steae"></span>
+    </div>
+    <div>
+      <label for="reli">Animal Handling:</label>
+      <input type="checkbox" name="anim" value="animp" formControlName="anim">
+      <span id=animx> 
+          <label>Expertise?</label> <input type="checkbox" name="anim" value="anime"  formControlName="anime">
+      </span>
+    </div>
+    <div>
+      <label for="insi">Insight:</label>
+      <input type="checkbox" name="insi" value="insip" formControlName="insi">
+      <span id=insix> <label>Expertise?</label> <input type="checkbox" name="insi" value="insie"  formControlName="insie"> </span>
+    </div>
+    <div>
+      <label for="medi">Medicine:</label>
+      <input type="checkbox" name="medi" value="medip" formControlName="medi">
+      <span id=medix> <label>Expertise?</label> <input type="checkbox" name="medi" value="medie"  formControlName="medie"> </span>
+    </div>
+    <div>
+      <label for="perc">Perception:</label>
+      <input type="checkbox" name="perc" value="percp"  formControlName="perc">
+      <span id=percx> <label>Expertise?</label> <input type="checkbox" name="perc" value="perce"  formControlName="perce"> </span>
+    </div>
+    <div>
+      <label for="surv">Survival:</label>
+      <input type="checkbox" name="surv" value="survp" (click)='makeExp("survx","surv","surve")' formControlName="surv">
+      <span id=survx> <label>Expertise?</label> <input type="checkbox" name="surv" value="surve"  formControlName="surve"> </span>
+    </div>
+        <div>
+          <label for="arca">Arcana:</label>
+          <input type="checkbox" name="arca" value="arcap" formControlName="arca">
+          <span id=arcax> <label>Expertise?</label> <input type="checkbox" name="arca" value="arcae"  formControlName="arcae"> </span>
+        </div>
+        <div>
+          <label for="hist">History:</label>
+          <input type="checkbox" name="hist" value="histp" formControlName="hist">
+          <span id=histx> <label>Expertise?</label> <input type="checkbox" name="hist" value="histe"  formControlName="histe"> </span>
+        </div>
+        <div>
+          <label for="inve">Investigation:</label>
+          <input type="checkbox" name="inve" value="invep" formControlName="inve">
+          <span id=invex><label>Expertise?</label> <input type="checkbox" name="inve" value="invee"  formControlName="invee"> </span>
+        </div>
+        <div>
+          <label for="natu">Nature:</label>
+          <input type="checkbox" name="natu" value="natup" formControlName="natu">
+          <span id=natux> <label>Expertise?</label> <input type="checkbox" name="natu" value="natue"  formControlName="natue"></span>
+        </div>
+        <div>
+          <label for="reli">Religion:</label>
+          <input type="checkbox" name="reli" value="relip" formControlName="reli">
+          <span id=relix> <label>Expertise?</label> <input type="checkbox" name="reli" value="relie"  formControlName="relie"> </span>
+        </div>
+        <div>
+        <label for="dece">Deception:</label>
+        <input type="checkbox" name="dece" value="decep" formControlName="dece">
+        <span id=decex> <label>Expertise?</label> <input type="checkbox" name="dece" value="decee"  formControlName="decee"> </span>
+      </div>
+      <div>
+        <label for="inti">Intimidation:</label>
+        <input type="checkbox" name="inti" value="intip" formControlName="inti">
+        <span id=intix> <label>Expertise?</label> <input type="checkbox" name="inti" value="intie"  formControlName="intie"> </span>
+      </div>
+      <div>
+        <label for="perf">Performance:</label>
+        <input type="checkbox" name="perf" value="perfp" formControlName="perf">
+        <span id=perfx> <label>Expertise?</label> <input type="checkbox" name="perf" value="perfe"  formControlName="perfe"> </span>
+      </div>
+      <div>
+        <label for="surv">Persuasion:</label>
+        <input type="checkbox" name="pers" value="persp" formControlName="pers">
+        <span id=persx> <label>Expertise?</label> <input type="checkbox" name="pers" value="perse"  formControlName="perse"></span>
+      </div>
       </div>
 
-      <div class="form-group">
-        <label for="campaignName">Campaign Name: </label>
-        <input type="text" class="form-control" id="campaignName" required name="campaignName"
-         >
-      </div>
-
-      <div class="form-group">
-        <label for="characterName">Character's Name: </label>
-        <input type="text" class="form-control" id="characterName" required  name="characterName"
-          >
-      </div>
-      <app-race-form></app-race-form>
-      <app-class-form></app-class-form>
-      <app-stats-form></app-stats-form>
-      <app-prof-form></app-prof-form>
-
-    </form>
+ 
 
 
+  <button type="submit" class="btn btn-success">Submit</button>
+  <button class="btn btn-success" type="button" (click)="charSheet.reset()">New Character</button>
 
-      <button type="submit" class="btn btn-success">Submit</button>
-      <button class="btn btn-success" type="button" (click)="charForm.reset()">New Character</button>
-
-   
+  </form>
